@@ -1,6 +1,17 @@
+// User function Template for Java
+
 class Solution {
-    public int countDigits(int n) {
+    static int evenlyDivides(int n) {
         // code here
-        return String.valueOf(n).length();
+        int count = 0;
+        int original = n;
+        while(n > 0){
+            int lastdigit = n % 10;
+            if(lastdigit != 0 && original % lastdigit == 0){
+                count++;
+            }
+            n = n / 10;
+        }
+        return count;
     }
 }
