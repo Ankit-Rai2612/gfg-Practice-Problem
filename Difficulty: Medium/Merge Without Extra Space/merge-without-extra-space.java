@@ -1,22 +1,33 @@
 class Solution {
     public void mergeArrays(int a[], int b[]) {
-        // code here
+        // code here    
         int n = a.length;
         int m = b.length;
+        int[] merged = new int[n + m];
         
-        int i = n-1;
-        int j = 0;
+        int i=0, j=0, k=0;
         
-        while(i>=0 && j<m){
-            if(a[i] > b[j]){
-                int temp = a[i];
-                a[i] = b[j];
-                b[j] = temp;
+        while(i < n && j < m){
+            if(a[i] <= b[j]){
+                merged[k++] = a[i++];
+            }else{
+                merged[k++] = b[j++];
             }
-            i--;
-            j++;
         }
-        Arrays.sort(b);
-        Arrays.sort(a);
+        
+        while ( i < n){
+            merged[k++] = a[i++];
+        }
+        while (j < m){
+            merged[k++] = b[j++];
+        }
+        
+        for(i=0; i<n; i++){
+            a[i] = merged[i];
+        }
+        
+        for(j=0; j<m; j++){
+            b[j] = merged[n + j];
+        }
     }
 }
