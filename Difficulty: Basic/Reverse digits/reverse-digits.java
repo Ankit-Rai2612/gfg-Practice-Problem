@@ -1,5 +1,3 @@
-// User function Template for Java
-
 class Solution {
     public int reverseDigits(int n) {
         // Code here
